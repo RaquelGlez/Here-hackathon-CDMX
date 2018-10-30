@@ -1,5 +1,15 @@
 # Hackathon  Laboratoria CDMX - HERE
 
+En este link se encuentra la documentación pertinente.
+
+[_Click aquí_](https://sites.google.com/s/1t9ChRn9btuNU0ha39EtlFdT9_d3gpjJk/p/1EDj7bj7gUdj78QXSqd87V99f5W39K0Ic/edit)
+
+
+Link de la presentación 
+
+[_Click aquí_](https://docs.google.com/presentation/d/1f9aUz9IRUmPLPcGOl1v41lTSGnRYeK-WYZqnfWFJ8Xo/edit?usp=sharing)
+
+
 ## CONTEXTO - PROBLEMA:
 
 La cuestión de la logística en escuelas con el transporte escolar es universal. Todos los días, en varios países, padres, madres, niños, niñas, conductores, directores de escuela, gestores de flota escolar tienen que comunicarse y transportar niños con seguridad y confort. 
