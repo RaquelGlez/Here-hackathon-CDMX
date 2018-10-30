@@ -1,25 +1,63 @@
 <template>
-    <div id="divmap">
-        <Drivermap appId="kjUJtSCkxIEv0qQOYCUE" appCode="3lVlTVLLiPXEesKAAu1HgQ" location=" Benito Juarez, CDMX" lat="19.3983994" lng="-99.1576614" width="100%" height="500px" />
-    </div>
+  <div class="container mt-5">
+    <div class="here-map"></div>
+    <div ref="map" v-bind:style="{width: width, height: height}"></div>
+  </div>
 </template>
 
 <script>
-import Drivermap from "./Driver/DriverMap.vue";
 export default {
   name: "Map",
-  components: {
-    Drivermap
+  data() {
+    return {
+      map: {},
+      platform: {},
+      geocoder: {}
+    };
+  },
+  props: {
+    appId: String,
+    appCode: String,
+    lat: String,
+    lng: String,
+    width: String,
+    height: String,
+    location: String
+  },
+  created() {
+    this.platform = new H.service.Platform({
+      app_id: this.appId,
+      app_code: this.appCode
+    });
+    this.geocoder = this.platform.getGeocodingService();
+  },
+  mounted() {
+    this.map = new H.Map(
+      this.$refs.map,
+      this.platform.createDefaultLayers().normal.map,
+      {
+        zoom: 14,
+        center: { lng: this.lng, lat: this.lat }
+      }
+    );
+    this.geocoder.geocode(
+      { searchText: this.location },
+      data => {
+        if (data.Response.View.length > 0) {
+          if (data.Response.View[0].Result.length > 0) {
+            var coords =
+              data.Response.View[0].Result[0].Location.DisplayPosition;
+            this.map.setCenter({ lat: coords.Latitude, lng: coords.Longitude });
+            this.map.addObject(
+              new H.map.Marker({ lat: coords.Latitude, lng: coords.Longitude })
+            );
+          }
+        }
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 };
 </script>
-
-<style>
-#divmap {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>

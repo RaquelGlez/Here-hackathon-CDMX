@@ -25,14 +25,22 @@
                 </ul>
             </div>
         </nav>
+        <Map appId="kjUJtSCkxIEv0qQOYCUE" appCode="3lVlTVLLiPXEesKAAu1HgQ" location=" Benito Juarez, CDMX" lat="19.3983994" lng="-99.1576614" width="100%" height="500px" />
     </div>
 </template>
 
 <script>
 const fb = require("../../firebaseConfig.js");
+import Map from "../Map.vue";
+
+const platform = new H.service.Platform({
+  app_id: "kjUJtSCkxIEv0qQOYCUE",
+  app_code: "3lVlTVLLiPXEesKAAu1HgQ"
+});
 
 export default {
   name: "SchoolMap",
+  components: { Map },
   methods: {
     logout() {
       fb.auth.signOut().then(() => {

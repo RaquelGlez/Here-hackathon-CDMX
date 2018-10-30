@@ -21,23 +21,22 @@
         </ul>
       </div>
     </nav>
+    <Map appId="kjUJtSCkxIEv0qQOYCUE" appCode="3lVlTVLLiPXEesKAAu1HgQ" location=" Benito Juarez, CDMX" lat="19.3983994" lng="-99.1576614" width="100%" height="500px" />
 
-    <div class="container mt-5">
-      <div class="row">
-        <div class="offset-md-3 col-md-6">
-          <div class="here-map"></div>
-          <div ref="map" v-bind:style="{width: width, height: height}">
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
+import Map from "../Map.vue";
+
+const platform = new H.service.Platform({
+  app_id: "kjUJtSCkxIEv0qQOYCUE",
+  app_code: "3lVlTVLLiPXEesKAAu1HgQ"
+});
 const fb = require("../../firebaseConfig.js");
 export default {
   name: "DriverMap",
+  components: { Map },
   methods: {
     logout() {
       fb.auth.signOut().then(() => {
