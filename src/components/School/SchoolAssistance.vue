@@ -33,7 +33,7 @@
                     <h5>REGISTRO DE ASISTENCIA</h5>
                 </div>
                 <form class="my-5">
-                    <table class="table">
+                    <table class="table table-responsive">
                         <thead>
                             <tr>
                                 <th scope="col">Fecha</th>

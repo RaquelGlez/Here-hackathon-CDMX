@@ -35,7 +35,7 @@
           <input type="text" v-model="student" disabled>
           <input type="text" v-model="code" disabled>
           <input type="text" class="mb-5" v-model="group" disabled>
-          <table class="table">
+          <table class="table table-responsive">
             <thead>
               <tr>
                 <th scope="col">Fecha</th>
@@ -81,13 +81,16 @@ export default {
       });
     });
 
-    fb.assistanceCollection.get().then(assistance =>{
+    fb.assistanceCollection.get().then(assistance => {
       assistance.forEach(element => {
-       if(element.data().code === this.code.substr(9)){
-        this.date.push({date:element.data().date, present: element.data().present})
-       }
+        if (element.data().code === this.code.substr(9)) {
+          this.date.push({
+            date: element.data().date,
+            present: element.data().present
+          });
+        }
       });
-    })
+    });
   },
   methods: {
     logout() {
